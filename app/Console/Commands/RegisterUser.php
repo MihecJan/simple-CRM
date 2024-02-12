@@ -13,7 +13,7 @@ class RegisterUser extends Command
      *
      * @var string
      */
-    protected $signature = 'app:register-user';
+    protected $signature = 'user:register';
 
     /**
      * The console command description.
@@ -31,17 +31,18 @@ class RegisterUser extends Command
         $name = $this->ask('Enter the user\'s name');
         $email = $this->ask('Enter the user\'s email');
         $password = $this->secret('Enter the user\'s password');
-        $repeatPassword = $this->secret('Repeat the user\'s password');
+        $passwordConfirmation = $this->secret('Repeat the user\'s password');
 
         // Validate input
         $validator = Validator::make([
             'name' => $name,
             'email' => $email,
             'password' => $password,
+            'password_confirmation' => $passwordConfirmation,
         ], [
             'name' => 'required',
             'email' => 'required|email|unique:users,email', // Required and must be unique in the email column of theusers table
-            'password' => 'required|same:password',         // Required and has to match the password field
+            'password' => 'required|confirmed',             // Required and has to match the password_confirmation field
         ]);
 
         if ($validator->fails()) {
