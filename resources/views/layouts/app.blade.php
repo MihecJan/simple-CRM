@@ -16,20 +16,22 @@
     </head>
     <body
         class="font-sans antialiased"
-        x-data="{ open: false }"
+        x-data="{ open: !(window.innerWidth < 640), isSmallScren: (window.innerWidth < 640) }"
+        @resize.window="isSmallScren = window.innerWidth < 640"
+        x-cloak
     >
         <div class="flex">
             @include('layouts.navigation')
             
             <div class="min-h-screen bg-gray-100 grow">
-    
+                
                 <!-- Page Heading -->
                 @if (isset($header))
                     <header class="bg-white shadow h-16">
 
                         <div class="flex h-full">
                             <!-- Hamburger -->
-                            <div class="-me-2 flex items-center px-4 sm:px-6 lg:px-8 sm:hidden">
+                            <div class="-me-2 flex items-center px-4 sm:px-6 lg:px-8">
                                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -56,7 +58,7 @@
                 @endif
     
                 <!-- Page Content -->
-                <main>
+                <main :class="{ 'blur-sm': open && isSmallScren }">
                     {{ $slot }}
                 </main>
             </div>
