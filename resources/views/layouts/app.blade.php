@@ -16,7 +16,7 @@
     </head>
     <body
         class="font-sans antialiased"
-        x-data="{ open: !(window.innerWidth < 640), screenWidth: window.innerWidth }"
+        x-data="{ open: !(window.innerWidth < 768), screenWidth: window.innerWidth }"
         @resize.window="screenWidth = window.innerWidth"
         x-cloak
     >
@@ -58,7 +58,7 @@
                 @endif
     
                 <!-- Page Content -->
-                <main :class="{ 'blur-sm': open && (screenWidth < 640) }">
+                <main :class="{ 'blur-sm': open && (screenWidth < 768) }">
                     {{ $slot }}
                 </main>
             </div>

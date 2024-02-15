@@ -1,5 +1,5 @@
 <nav
-    class="bg-white border-gray-100 z-10 w-full top-16 absolute sm:static sm:w-48 md:w-56 lg:w-64"
+    class="bg-white border-gray-100 z-10 w-full top-16 absolute md:static md:w-56 lg:w-64"
     x-show="open"
 >
     <div class="h-full" style="width:inherit">
@@ -15,7 +15,7 @@
                     </div>
 
                     <!-- Navigation Links -->
-                    <div class="hidden sm:flex flex-col">
+                    <div class="hidden md:flex flex-col">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             <x-slot:svgPath>
                                 <path fill-rule="evenodd" d="M11.3 3.3a1 1 0 0 1 1.4 0l6 6 2 2a1 1 0 0 1-1.4 1.4l-.3-.3V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3c0 .6-.4 1-1 1H7a2 2 0 0 1-2-2v-6.6l-.3.3a1 1 0 0 1-1.4-1.4l2-2 6-6Z" clip-rule="evenodd"/>
@@ -32,7 +32,7 @@
                 </div>
 
                 <!-- Settings -->
-                <div class="border-t border-secondary-100 fixed bottom-0 hidden sm:flex sm:flex-col sm:w-64 lg:w-72">
+                <div class="border-t border-secondary-100 fixed bottom-0 hidden md:flex md:flex-col md:w-56 lg:w-64">
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         <x-slot:svgPath>
                             <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Responsive Navigation Menu -->
-        <div :class="{ 'block': open, 'hidden': ! open }" class="bg-secondary-500 hidden sm:hidden">
+        <div :class="{ 'block': open, 'hidden': ! open }" class="bg-secondary-500 hidden md:hidden">
             <div>
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     <x-slot:svgPath>

@@ -34,7 +34,7 @@ class ClientController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'description' => 'string|max:255',
+            'description' => 'string|max:65535',
         ]);
 
         $request->user()->clients()->create($validated);
