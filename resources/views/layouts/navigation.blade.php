@@ -1,5 +1,5 @@
 <nav
-    class="bg-white border-gray-100 z-10 w-full top-16 absolute sm:static sm:w-64 lg:w-72"
+    class="bg-white border-gray-100 z-10 w-full top-16 absolute sm:static sm:w-48 md:w-56 lg:w-64"
     x-show="open"
 >
     <div class="h-full" style="width:inherit">

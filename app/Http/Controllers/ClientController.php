@@ -13,7 +13,9 @@ class ClientController extends Controller
      */
     public function index(): View
     {
-        return view('clients.index');
+        return view('clients.index', [
+            'clients' => auth()->user()->clients,
+        ]);
     }
 
     /**

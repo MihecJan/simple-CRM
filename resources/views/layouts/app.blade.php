@@ -16,14 +16,14 @@
     </head>
     <body
         class="font-sans antialiased"
-        x-data="{ open: !(window.innerWidth < 640), isSmallScren: (window.innerWidth < 640) }"
-        @resize.window="isSmallScren = window.innerWidth < 640"
+        x-data="{ open: !(window.innerWidth < 640), screenWidth: window.innerWidth }"
+        @resize.window="screenWidth = window.innerWidth"
         x-cloak
     >
         <div class="flex">
             @include('layouts.navigation')
             
-            <div class="min-h-screen bg-gray-100 grow">
+            <div class="min-h-screen bg-gray-200 grow">
                 
                 <!-- Page Heading -->
                 @if (isset($header))
@@ -58,7 +58,7 @@
                 @endif
     
                 <!-- Page Content -->
-                <main :class="{ 'blur-sm': open && isSmallScren }">
+                <main :class="{ 'blur-sm': open && (screenWidth < 640) }">
                     {{ $slot }}
                 </main>
             </div>
