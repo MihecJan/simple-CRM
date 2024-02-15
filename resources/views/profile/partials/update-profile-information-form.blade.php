@@ -1,5 +1,5 @@
 <section>
-    <header>
+    <header class="p-4 sm:px-6">
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
         </h2>
@@ -9,11 +9,13 @@
         </p>
     </header>
 
+    <hr class="border-gray-300">
+
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="space-y-6 p-4 pt-0 sm:px-6">
         @csrf
         @method('patch')
 

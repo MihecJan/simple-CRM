@@ -8,7 +8,7 @@
             <div class="flex flex-col justify-between h-full bg-secondary-500">
                 <div>
                     <!-- Logo -->
-                    <div class="flex justify-center w-full h-16 bg-secondary-600">
+                    <div class="shadow flex justify-center w-full h-16 bg-secondary-600">
                         <a href="{{ route('dashboard') }}" class="my-auto">
                             <x-application-logo class="block h-9 text-secondary-100" />
                         </a>
@@ -21,6 +21,12 @@
                                 <path fill-rule="evenodd" d="M11.3 3.3a1 1 0 0 1 1.4 0l6 6 2 2a1 1 0 0 1-1.4 1.4l-.3-.3V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3c0 .6-.4 1-1 1H7a2 2 0 0 1-2-2v-6.6l-.3.3a1 1 0 0 1-1.4-1.4l2-2 6-6Z" clip-rule="evenodd"/>
                             </x-slot>
                             {{ __('Dashboard') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                            <x-slot:svgPath>
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm2 4a3 3 0 0 0-3 2v.2c0 .1-.1.2 0 .2v.2c.3.2.6.4.9.4h6c.3 0 .6-.2.8-.4l.2-.2v-.2l-.1-.1A3 3 0 0 0 10 14H7.9Z" clip-rule="evenodd"/>
+                            </x-slot>
+                            {{ __('Clients') }}
                         </x-nav-link>
                     </div>
                 </div>
@@ -60,9 +66,12 @@
                     </x-slot>
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link> --}}
+                <x-responsive-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                    <x-slot:svgPath>
+                        <path fill-rule="evenodd" d="M4 4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm2 4a3 3 0 0 0-3 2v.2c0 .1-.1.2 0 .2v.2c.3.2.6.4.9.4h6c.3 0 .6-.2.8-.4l.2-.2v-.2l-.1-.1A3 3 0 0 0 10 14H7.9Z" clip-rule="evenodd"/>
+                    </x-slot>
+                    {{ __('Clients') }}
+                </x-responsive-nav-link>
             </div>
 
             <!-- Responsive Settings Options -->
