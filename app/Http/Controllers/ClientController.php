@@ -44,6 +44,16 @@ class ClientController extends Controller
     }
 
     /**
+     * Display a specific client.
+     */
+    public function show(Client $client): View
+    {
+        return view('clients.show', [
+            'client' => $client,
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified client.
      */
     public function edit(Client $client): View

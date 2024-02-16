@@ -11,7 +11,7 @@
                 <x-td>{{ $client->name }}</x-td>
                 <x-td>{{ $client->email }}</x-td>
                 <x-td
-                    class="text-gray-500"
+                    class="text-gray-600"
                     x-data="{ text: '{{ $client->description }}' }"
                     x-text="text.substring(0, (screenWidth - 500) / 20) + '...'"
                 ></x-td>

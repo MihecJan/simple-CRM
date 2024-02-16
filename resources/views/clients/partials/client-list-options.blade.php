@@ -1,3 +1,6 @@
+<a href="{{ route('clients.show', $client) }}">
+    <x-primary-button>Show</x-primary-button>
+</a>
 <a href="{{ route('clients.edit', $client) }}">
     <x-secondary-button>Edit</x-secondary-button>
 </a>

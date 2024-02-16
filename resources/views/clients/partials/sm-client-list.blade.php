@@ -19,7 +19,7 @@
                 <div>{{ $client->name }}</div>
                 <div>{{ $client->email }}</div>
                 <br>
-                <div class="block text-gray-500">{{ $client->description }}</div>
+                <div class="block text-gray-600">{{ $client->description }}</div>
                 <br>
                 <div class="flex gap-1 flex-row justify-end">
                     @include('clients.partials.client-list-options')
