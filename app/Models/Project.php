@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\{ BelongsTo, HasMany };
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Project extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'description'
+        'title',
+        'client_id',
+        'deadline',
+        'description',
     ];
 
     public function user(): BelongsTo
@@ -21,8 +22,8 @@ class Client extends Model
         return $this->BelongsTo(User::class);
     }
 
-    public function projects(): HasMany
+    public function client(): BelongsTo
     {
-        return $this->hasMany(Project::class);
+        return $this->BelongsTo(Client::class);
     }
 }

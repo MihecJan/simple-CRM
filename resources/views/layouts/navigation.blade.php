@@ -28,6 +28,12 @@
                             </x-slot>
                             {{ __('Clients') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
+                            <x-slot:svgPath>
+                                <path fill-rule="evenodd" d="M9 2.2V7H4.2l.4-.5 3.9-4 .5-.3Zm2-.2v5a2 2 0 0 1-2 2H4v11c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                            </x-slot>
+                            {{ __('Projects') }}
+                        </x-nav-link>
                     </div>
                 </div>
 
@@ -71,6 +77,12 @@
                         <path fill-rule="evenodd" d="M4 4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3c0-.6.4-1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm2 4a3 3 0 0 0-3 2v.2c0 .1-.1.2 0 .2v.2c.3.2.6.4.9.4h6c.3 0 .6-.2.8-.4l.2-.2v-.2l-.1-.1A3 3 0 0 0 10 14H7.9Z" clip-rule="evenodd"/>
                     </x-slot>
                     {{ __('Clients') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
+                    <x-slot:svgPath>
+                        <path fill-rule="evenodd" d="M9 2.2V7H4.2l.4-.5 3.9-4 .5-.3Zm2-.2v5a2 2 0 0 1-2 2H4v11c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                    </x-slot>
+                    {{ __('Projects') }}
                 </x-responsive-nav-link>
             </div>
 

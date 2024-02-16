@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Client;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
-class ClientSeeder extends Seeder
+class ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,10 @@ class ClientSeeder extends Seeder
     public function run(): void
     {
         // Only import seeds if DB is empty.
-        if (Client::count() !== 0) {
+        if (Project::count() !== 0) {
             return;
         }
 
-        Client::factory(4)->create();
+        Project::factory(6)->create();
     }
 }

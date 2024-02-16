@@ -86,9 +86,14 @@ class ClientController extends Controller
     /**
      * Remove the specified client from storage.
      */
-    public function destroy(Client $client): RedirectResponse
+    public function destroy(Request $request, Client $client): RedirectResponse
     {
         $this->authorize('delete', $client);
+
+        if ($request->bw_toggle === "on") {
+            // Delete all projects associated with a client
+            $client->projects()->delete();
+        }
 
         $client->delete();
 

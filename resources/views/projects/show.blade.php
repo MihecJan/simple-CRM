@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clients') }}
+            {{ __('Projects') }}
         </h2>
     </x-slot>
 
@@ -17,19 +17,27 @@
             
                     <div class="p-4 flex flex-col gap-4 md:grid md:grid-rows-[repeat(2,min-content),1fr] md:grid-cols-2">
                         <div>
-                            <div class="font-bold text-gray-900">Name:</div>
-                            <div class="text-gray-600">{{ $client->name }}</div>
+                            <div class="font-bold text-gray-900">Title:</div>
+                            <div class="text-gray-600">{{ $project->title }}</div>
                         </div>
                         <div class="md:col-start-1">
-                            <div class="font-bold text-gray-900">Email:</div>
-                            <div class="text-gray-600">{{ $client->email }}</div>
+                            <div class="font-bold text-gray-900">Client:</div>
+                            <div class="text-gray-600">
+                                @if ($project->client)
+                                    <a href="{{ route('clients.show', $project->client) }}">
+                                        <span class="text-gray-900 underline">{{ $project->client->name }}</span>
+                                    </a>
+                                @else
+                                    <span class="text-gray-600">Client missing</span>
+                                @endif
+                            </div>
                         </div>
                         <div class="md:col-start-2 md:row-start-1 md:row-span-4">
                             <div class="font-bold text-gray-900">Description:</div>
-                            <div class="text-gray-600 max-w-prose">{{ $client->description }}</div>
+                            <div class="text-gray-600 max-w-prose">{{ $project->description }}</div>
                         </div>
-                        <a class="col-start-1" href="{{ route('clients.index') }}">
-                            <x-secondary-button>Show all clients</x-secondary-button>
+                        <a class="col-start-1"" href="{{ route('projects.index') }}">
+                            <x-secondary-button>Show all projects</x-secondary-button>
                         </a>
                     </div>
                 </section>
@@ -38,27 +46,13 @@
             <div class="bg-white shadow sm:rounded">
                 <section>
                     <header class="p-4 sm:px-6">
-                        <h2 class="text-lg font-medium text-gray-900">Projects</h2>
+                        <h2 class="text-lg font-medium text-gray-900">Tasks</h2>
                     </header>
 
                     <hr class="border-gray-300">
             
                     <div class="p-4 flex flex-col gap-4">
-                        <a href="{{ route('projects.create', ['client' => $client]) }}">
-                            <x-primary-button>Create project</x-primary-button>
-                        </a>
-                        @php
-                            $projects = $client->projects;
-                        @endphp
 
-                        <!-- Project list (less than sm width) -->
-                        @include('projects.partials.project-list')
-
-                        <!-- Project list (sm width) -->
-                        @include('projects.partials.sm-project-list')
-
-                        <!-- Project list (xl width) -->
-                        @include('projects.partials.xl-project-list')
                     </div>
                 </section>
             </div>
