@@ -7,6 +7,9 @@
         <p class="mt-1 text-sm text-gray-600">
             {{ __("Update your account's profile information and email address.") }}
         </p>
+        <p class="text-sm text-red-600">
+            Demo profile cannot be updated!
+        </p>
     </header>
 
     <hr class="border-gray-300">
@@ -60,6 +63,14 @@
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
+            @elseif (session('status') === 'profile-not-updated')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-red-600"
+                >{{ __('Not saved!') }}</p>
             @endif
         </div>
     </form>

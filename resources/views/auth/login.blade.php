@@ -2,13 +2,25 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form
+        method="POST"
+        action="{{ route('login') }}"
+        x-data="{
+            email: '',
+            password: ''
+        }"
+        x-ref="form"
+    >
         @csrf
 
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input
+                id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                required autofocus autocomplete="username"
+                x-model="email" 
+            />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -19,7 +31,8 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required autocomplete="current-password"
+                            x-model="password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -41,6 +54,17 @@
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
+            </x-primary-button>
+
+            <x-primary-button
+                class="ms-3"
+                @click.prevent="
+                    email = 'demo@demo';
+                    password = 'demo_password';
+                    $nextTick(() => $refs.form.submit());
+                "
+            >
+                {{ __('Demo account') }}
             </x-primary-button>
         </div>
     </form>

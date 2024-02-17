@@ -25,6 +25,10 @@ class PasswordResetLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if ($request->email === 'demo@demo') {
+            return back()->withErrors(['email' => 'This is a demo email. Link not sent!']);
+        }
+
         $request->validate([
             'email' => ['required', 'email'],
         ]);

@@ -26,6 +26,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        if ($request->user()->email === 'demo@demo') {
+            return Redirect::route('profile.edit')->with('status', 'profile-not-updated');
+        }
+
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -42,6 +46,10 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if ($request->user()->email === 'demo@demo') {
+            return back()->with('status', 'account-not-deleted');
+        }
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

@@ -1,4 +1,4 @@
-<section>
+<section id="update_password">
     <header class="p-4 sm:px-6">
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
@@ -6,6 +6,9 @@
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        </p>
+        <p class="text-sm text-red-600">
+            Demo profile cannot be updated!
         </p>
     </header>
 
@@ -44,6 +47,19 @@
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
+            @elseif (session('status') === 'password-not-updated')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="
+                        $nextTick(() => {
+                            document.querySelector('#update_password').scrollIntoView({ behavior: 'smooth'});
+                        });
+                        setTimeout(() => show = false, 2000);
+                    "
+                    class="text-sm text-red-600"
+                >{{ __('Not saved!') }}</p>
             @endif
         </div>
     </form>

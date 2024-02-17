@@ -1,4 +1,4 @@
-<section>
+<section id="delete_account">
     <header class="p-4 sm:px-6">
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Delete Account') }}
@@ -6,6 +6,9 @@
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+        </p>
+        <p class="text-sm text-red-600">
+            Demo profile cannot be deleted!
         </p>
     </header>
 
@@ -16,6 +19,21 @@
             x-data=""
             x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
         >{{ __('Delete Account') }}</x-danger-button>
+
+        @if (session('status') === 'account-not-deleted')
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="
+                    $nextTick(() => {
+                        document.querySelector('#delete_account').scrollIntoView({ behavior: 'smooth'});
+                    });
+                    setTimeout(() => show = false, 2000);
+                "
+                class="text-sm text-red-600"
+            >{{ __('Not deleted!') }}</p>
+        @endif
     </div>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>

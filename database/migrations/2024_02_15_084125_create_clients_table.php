@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->integer('stage_id')->default(1);
             $table->string('name');
             $table->string('email');
             $table->text('description');
