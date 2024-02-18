@@ -34,11 +34,17 @@
                             </x-slot>
                             {{ __('Projects') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('pipeline')" :active="request()->routeIs('pipeline')">
+                            <x-slot:svgPath>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                            </x-slot>
+                            {{ __('Pipeline') }}
+                        </x-nav-link>
                     </div>
                 </div>
 
                 <!-- Settings -->
-                <div class="border-t border-secondary-100 fixed bottom-0 hidden md:flex md:flex-col md:w-56 lg:w-64">
+                <div class="border-t border-secondary-300 fixed bottom-0 hidden md:flex md:flex-col md:w-56 lg:w-64">
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         <x-slot:svgPath>
                             <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
@@ -81,6 +87,12 @@
                 <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
                     <x-slot:svgPath>
                         <path fill-rule="evenodd" d="M9 2.2V7H4.2l.4-.5 3.9-4 .5-.3Zm2-.2v5a2 2 0 0 1-2 2H4v11c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                    </x-slot>
+                    {{ __('Projects') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pipeline')" :active="request()->routeIs('pipeline')">
+                    <x-slot:svgPath>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
                     </x-slot>
                     {{ __('Projects') }}
                 </x-responsive-nav-link>

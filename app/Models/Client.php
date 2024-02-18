@@ -20,10 +20,10 @@ class Client extends Model
      * Client stages
      */
     public const STAGES = [
-        'potential' => 1,
-        'negotiation' => 2,
-        'won/lost' => 3,
-        'returning' => 4,
+        1 => 'potential',
+        2 => 'negotiation',
+        3 => 'won/lost',
+        4 => 'returning',
     ];
 
     /**

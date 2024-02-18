@@ -1,5 +1,6 @@
 <?php
 
+use App\LiveWire\Pipeline;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
@@ -29,6 +30,10 @@ Route::resource('/clients', ClientController::class)
 
 Route::resource('/projects', ProjectController::class)
     ->middleware(['auth', 'verified']);
+
+Route::get('/pipeline', Pipeline::class)
+    ->middleware(['auth', 'verified'])
+    ->name('pipeline');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
