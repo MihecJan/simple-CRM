@@ -6,6 +6,7 @@
         @endif
 
         <div class="m-2">
+            <x-gender :gender="$client->gender"></x-gender>
             <div class="font-bold">Name:</div>
             <div>{{ $client->name }}</div>
             <br>

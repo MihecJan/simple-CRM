@@ -1,6 +1,7 @@
 <div class="hidden xl:block">
     <x-table>
         <x-tr>
+            <x-th></x-th>
             <x-th>Name</x-th>
             <x-th>Email</x-th>
             <x-th>Description</x-th>
@@ -8,6 +9,9 @@
         </x-tr>
         @foreach ($clients as $client)
             <x-tr>
+                <x-td>
+                    <x-gender :gender="$client->gender"></x-gender>
+                </x-td>
                 <x-td>{{ $client->name }}</x-td>
                 <x-td>{{ $client->email }}</x-td>
                 <x-td

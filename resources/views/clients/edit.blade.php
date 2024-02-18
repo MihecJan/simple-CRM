@@ -31,7 +31,22 @@
                             <x-input-label for="email" :value="__('Email')" />
                             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $client->email)" required autocomplete="username" />
                             <x-input-error class="mt-2" :messages="$errors->get('email')" />
-                            </div>
+                        </div>
+
+                        <div>
+                            <x-input-label for="gender" value="Gender" />
+                            <x-select id="gender" name="gender" class="w-full mt-1">
+                                <option value="unknown">Unknown</option>
+                                <option
+                                    value="male"
+                                    {{ (!is_null($client->gender) && $client->gender === 'm') ? 'selected' : '' }}
+                                >Male</option>
+                                <option
+                                    value="female"
+                                    {{ (!is_null($client->gender) && $client->gender === 'f') ? 'selected' : '' }}
+                                >Female</option>
+                            </x-select>
+                        </div>
                             
                         <div>
                             <x-input-label for="description" :value="__('Description')" />

@@ -121,6 +121,7 @@
     </div>
 
     <div
+        class="text-gray-900 mt-1"
         x-data="{ show: false }"
         x-show="show"
         x-init="
@@ -134,7 +135,7 @@
         saved
     </div>
 
-    <div id="show_loading" class="transition-all duration-150 hidden relative">
+    <div id="show_loading" class="transition-all duration-150 hidden relative text-gray-900 mt-1">
         loading...
     </div>
 

@@ -21,6 +21,7 @@ class ClientFactory extends Factory
             'user_id' => User::all()->random()->id,
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
+            'gender' => $this->faker->randomElement([null, 'f', 'm']),
             'description' => $this->faker->sentence(rand(4, 24)),
         ];
     }

@@ -33,7 +33,7 @@
                                 <option value="">No client</option>
                                 @foreach ($clients as $client)
                                     <option
-                                    value="{{ $client->id }}"
+                                        value="{{ $client->id }}"
                                         {{
                                             (!is_null($passed_client)
                                             && $passed_client->id === $client->id)

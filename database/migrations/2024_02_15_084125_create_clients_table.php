@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('stage_id')->default(1);
             $table->string('name');
             $table->string('email');
+            $table->char('gender')->nullable();
             $table->text('description');
             $table->timestamps();
         });

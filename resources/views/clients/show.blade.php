@@ -15,7 +15,10 @@
                     
                     <hr class="border-gray-300">
             
-                    <div class="p-4 flex flex-col gap-4 md:grid md:grid-rows-[repeat(2,min-content),1fr] md:grid-cols-2">
+                    <div class="p-4 flex flex-col gap-4 md:grid md:grid-rows-[repeat(3,min-content),1fr] md:grid-cols-2">
+                        <div>
+                            <x-gender class="!w-12 !h-12" :gender="$client->gender"></x-gender>
+                        </div>
                         <div>
                             <div class="font-bold text-gray-900">Name:</div>
                             <div class="text-gray-600">{{ $client->name }}</div>
@@ -24,13 +27,17 @@
                             <div class="font-bold text-gray-900">Email:</div>
                             <div class="text-gray-600">{{ $client->email }}</div>
                         </div>
-                        <div class="md:col-start-2 md:row-start-1 md:row-span-4">
-                            <div class="font-bold text-gray-900">Description:</div>
-                            <div class="text-gray-600 max-w-prose">{{ $client->description }}</div>
-                        </div>
                         <a class="col-start-1" href="{{ route('clients.index') }}">
                             <x-secondary-button>Show all clients</x-secondary-button>
                         </a>
+                        <div class="md:col-start-2 md:row-start-1">
+                            <div class="font-bold text-gray-900">Stage:</div>
+                            <div class="text-gray-600 max-w-prose">{{ ucfirst($client->stage) }}</div>
+                        </div>
+                        <div class="md:col-start-2 md:row-start-2 md:row-span-4">
+                            <div class="font-bold text-gray-900">Description:</div>
+                            <div class="text-gray-600 max-w-prose">{{ $client->description }}</div>
+                        </div>
                     </div>
                 </section>
             </div>
