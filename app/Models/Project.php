@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\{ BelongsTo, HasMany };
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,5 +25,10 @@ class Project extends Model
     public function client(): BelongsTo
     {
         return $this->BelongsTo(Client::class);
+    }
+
+    public function tasks(): HasMany
+    {
+        return $this->HasMany(Task::class);
     }
 }

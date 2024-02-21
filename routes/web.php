@@ -1,9 +1,7 @@
 <?php
 
 use App\LiveWire\Pipeline;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\{ ProfileController, ClientController, ProjectController, TaskController };
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +27,9 @@ Route::resource('/clients', ClientController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('/projects', ProjectController::class)
+    ->middleware(['auth', 'verified']);
+
+    Route::resource('/tasks', TaskController::class)
     ->middleware(['auth', 'verified']);
 
 Route::get('/pipeline', Pipeline::class)
