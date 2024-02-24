@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="$project->title">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Projects') }}
@@ -19,6 +19,16 @@
                         <div>
                             <div class="font-bold text-gray-900">Title:</div>
                             <div class="text-gray-600">{{ $project->title }}</div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">Deadline:</div>
+                            <div class="text-gray-600">
+                                @if ($project->deadline)
+                                    {{ explode(' ', $project->deadline)[0] }}
+                                @else
+                                    {{ '/' }}
+                                @endif
+                            </div>
                         </div>
                         <div class="md:col-start-1">
                             <div class="font-bold text-gray-900">Client:</div>
@@ -50,9 +60,23 @@
                     </header>
 
                     <hr class="border-gray-300">
-            
-                    <div class="p-4 flex flex-col gap-4">
 
+                    <div class="p-4 flex flex-col gap-4">
+                        <a href="{{ route('tasks.create', ['project' => $project]) }}">
+                            <x-primary-button>Create task</x-primary-button>
+                        </a>
+                        @php
+                            $tasks = $project->tasks;
+                        @endphp
+
+                        <!-- Task list (less than sm width) -->
+                        @include('tasks.partials.task-list')
+
+                        <!-- Task list (sm width) -->
+                        @include('tasks.partials.sm-task-list')
+
+                        <!-- Task list (xl width) -->
+                        @include('tasks.partials.xl-task-list')
                     </div>
                 </section>
             </div>

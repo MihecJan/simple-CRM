@@ -17,7 +17,13 @@
             </div>
             <br>
             <div class="font-bold">Deadline:</div>
-            <div>{{ explode(' ', $task->deadline)[0] }}</div>
+            <div>
+                @php
+                    echo (explode(' ', $task->deadline)[0] === '')
+                        ? '/'
+                        : explode(' ', $task->deadline)[0];
+                @endphp
+            </div>
             <br>
             <div class="font-bold">Description:</div>
             <div class="block text-gray-600">{{ $task->description }}</div>

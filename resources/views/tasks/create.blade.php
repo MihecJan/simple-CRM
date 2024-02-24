@@ -1,7 +1,7 @@
-<x-app-layout title="Create project">
+<x-app-layout title="Create task">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Projects') }}
+            {{ __('Tasks') }}
         </h2>
     </x-slot>
 
@@ -11,40 +11,41 @@
                 <section>
                     <header class="p-4 sm:px-6">
                         <h2 class="text-lg font-medium text-gray-900">
-                            {{ __('Add new project') }}
+                            {{ __('Add new task') }}
                         </h2>
                     </header>
                     
                     <hr class="border-gray-300">
                     
-                    <form method="POST" action="{{ route('projects.store') }}" class="space-y-6 p-4 pt-0 sm:px-6">
+                    <form method="POST" action="{{ route('tasks.store') }}" class="space-y-6 p-4 pt-0 sm:px-6">
                         @csrf
                         @method('post')
 
                         <div>
-                            <x-input-label for="title" :value="__('Title')" />
-                            <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" :value="old('title', '')" required autofocus autocomplete="title" />
-                            <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                            <x-input-label for="task" :value="__('Task')" />
+                            <x-text-input id="task" name="task" type="text" class="mt-1 block w-full" :value="old('task', '')" required autofocus autocomplete="task" />
+                            <x-input-error class="mt-2" :messages="$errors->get('task')" />
                         </div>
 
                         <div>
-                            <x-input-label for="client" value="Client" />
-                            <x-select id="client" name="client_id" class="w-full mt-1">
-                                <option value="">No client</option>
-                                @foreach ($clients as $client)
+                            <x-input-label for="project" value="Project" />
+                            <x-select id="project" name="project_id" class="w-full mt-1">
+                                <option value="">No project</option>
+                                @foreach ($projects as $project)
                                     <option
-                                        value="{{ $client->id }}"
+                                        value="{{ $project->id }}"
                                         {{
-                                            (!is_null($passed_client)
-                                            && $passed_client->id === $client->id)
+                                            (!is_null($passed_project)
+                                            && $passed_project->id === $project->id)
                                             ? 'selected'
                                             : ''
                                         }}
                                     >
-                                        {{ $client->name }}
+                                        {{ $project->title }}
                                     </option>
                                 @endforeach
                             </x-select>
+                            <x-input-error class="mt-2" :messages="$errors->get('project_id')" />
                         </div>
 
                         <div>

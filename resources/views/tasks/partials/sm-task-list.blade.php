@@ -23,7 +23,13 @@
                         <span class="text-gray-900 underline">{{ $task->project->title }}</span>
                     </a>
                 </div>
-                <div>{{ explode(' ', $task->deadline)[0] }}</div>
+                <div>
+                    @php
+                        echo (explode(' ', $task->deadline)[0] === '')
+                            ? '/'
+                            : explode(' ', $task->deadline)[0];
+                    @endphp
+                </div>
                 <br>
                 <div class="block text-gray-600">{{ $task->description }}</div>
                 <br>

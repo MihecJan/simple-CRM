@@ -17,7 +17,17 @@
                 <x-td
                     class="text-gray-600"
                     x-data="{ text: '{{ $client->description }}' }"
-                    x-text="text.substring(0, (screenWidth - 500) / 20) + '...'"
+                    x-text="
+                        if (text.length > ((screenWidth - 500) / 20)) {
+                            return text.substring(0, (screenWidth - 500) / 20) + '...';
+                        }
+                        else if (text.length === 0) {
+                            return '/';
+                        }
+                        else {
+                            return text;
+                        }
+                    "
                 ></x-td>
                 <x-td class="flex flex-col gap-1 md:flex-row">
                     @include('clients.partials.client-list-options')
